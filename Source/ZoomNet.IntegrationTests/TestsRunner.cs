@@ -102,6 +102,7 @@ namespace ZoomNet.IntegrationTests
 				typeof(Contacts),
 				typeof(Dashboards),
 				typeof(Meetings),
+				typeof(Rooms),
 				typeof(Users),
 				typeof(Webinars),
 			};
