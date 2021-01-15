@@ -101,6 +101,7 @@ namespace ZoomNet.IntegrationTests
 				typeof(CloudRecordings),
 				typeof(Contacts),
 				typeof(Dashboards),
+				typeof(Devices),
 				typeof(Meetings),
 				typeof(Users),
 				typeof(Webinars),
