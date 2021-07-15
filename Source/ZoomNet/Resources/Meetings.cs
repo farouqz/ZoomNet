@@ -464,17 +464,19 @@ namespace ZoomNet.Resources
 		/// <param name="email">A valid email address.</param>
 		/// <param name="firstName">User's first name.</param>
 		/// <param name="lastName">User's last name.</param>
+		/// <param name="autoApprove">Auto approve registrant.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// A <see cref="Registrant" />.
 		/// </returns>
-		public Task<Registrant> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default)
+		public Task<Registrant> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, bool autoApprove = false, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("email", email);
 			data.AddPropertyIfValue("first_name", firstName);
 			data.AddPropertyIfValue("last_name", lastName);
+			data.AddPropertyIfValue("auto_approve", autoApprove);
 
 			return _client
 				.PostAsync($"meetings/{meetingId}/registrants")

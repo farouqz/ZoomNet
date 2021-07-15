@@ -227,12 +227,13 @@ namespace ZoomNet.Resources
 		/// <param name="email">A valid email address.</param>
 		/// <param name="firstName">User's first name.</param>
 		/// <param name="lastName">User's last name.</param>
+		/// <param name="autoApprove">Auto approve registrant.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// A <see cref="Registrant" />.
 		/// </returns>
-		Task<Registrant> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default);
+		Task<Registrant> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, bool autoApprove = false, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Approve a registration for a meeting.

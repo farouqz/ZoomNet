@@ -10,13 +10,23 @@ namespace ZoomNet.Models
 	public class Registrant
 	{
 		/// <summary>
-		/// Gets or sets the registrant id.
+		/// Gets or sets the meeting id.
 		/// </summary>
 		/// <value>
 		/// The id.
 		/// </value>
 		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
 		public string Id { get; set; }
+
+		/// <summary>
+		/// Gets or sets the registrant id.
+		/// </summary>
+		/// <value>
+		/// The id.
+		/// </value>
+		[JsonProperty("registrant_id", NullValueHandling = NullValueHandling.Ignore)]
+		public string RegistrantId { get; set; }
+
 
 		/// <summary>
 		/// Gets or sets a valid email address.

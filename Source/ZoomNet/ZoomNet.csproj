@@ -70,11 +70,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <AdditionalFiles Remove="C:\Projects\Tools\VedamoProcessor\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Remove="C:\Projects\Tools\VedamoProcessor\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <AdditionalFiles Include="$(SolutionDir)stylecop.json" Link="stylecop.json" />
   </ItemGroup>
 
   <PropertyGroup>
     <CodeAnalysisRuleSet>$(SolutionDir)StyleCopRules.ruleset</CodeAnalysisRuleSet>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
 </Project>
