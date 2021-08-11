@@ -61,5 +61,10 @@ namespace ZoomNet.Models
 		/// <value>The play URL.</value>
 		[JsonProperty(PropertyName = "share_url", NullValueHandling = NullValueHandling.Ignore)]
 		public string ShareUrl { get; set; }
+
+		/// <summary>Gets or sets the password of the sharing recording file.</summary>
+		/// <value>The password of the sharing recording file.</value>
+		[JsonProperty(PropertyName = "password", NullValueHandling = NullValueHandling.Ignore)]
+		public string Password { get; set; }
 	}
 }
