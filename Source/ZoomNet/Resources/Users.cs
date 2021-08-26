@@ -155,9 +155,9 @@ namespace ZoomNet.Resources
 				.DeleteAsync($"users/{userId}")
 				.WithArgument("action", "delete")
 				.WithArgument("transfer_email", transferEmail)
-				.WithArgument("transfer_meetings", transferMeetings.ToString().ToLower())
-				.WithArgument("transfer_webinars", transferWebinars.ToString().ToLower())
-				.WithArgument("transfer_recordings", transferRecordings.ToString().ToLower())
+				.WithArgument("transfer_meeting", transferMeetings.ToString().ToLower())
+				.WithArgument("transfer_webinar", transferWebinars.ToString().ToLower())
+				.WithArgument("transfer_recording", transferRecordings.ToString().ToLower())
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}

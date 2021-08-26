@@ -629,16 +629,7 @@ namespace ZoomNet
 		{
 			var (isError, errorMessage, errorCode) = GetErrorMessage(response.Message).GetAwaiter().GetResult();
 			if (!isError) return;
-
-			var diagnosticId = response.Message.RequestMessage.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
-			if (DiagnosticHandler.DiagnosticsInfo.TryGetValue(diagnosticId, out (WeakReference<HttpRequestMessage> RequestReference, string Diagnostic, long RequestTimeStamp, long ResponseTimestamp) diagnosticInfo))
-			{
-				throw new ZoomException(errorMessage, response.Message, diagnosticInfo.Diagnostic, errorCode);
-			}
-			else
-			{
-				throw new ZoomException(errorMessage, response.Message, "Diagnostic log unavailable", errorCode);
-			}
+			throw new ZoomException(errorMessage, response.Message, "", errorCode);
 		}
 
 		private static async Task<(bool, string, int?)> GetErrorMessage(HttpResponseMessage message)

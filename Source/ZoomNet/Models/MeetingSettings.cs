@@ -116,6 +116,13 @@ namespace ZoomNet.Models
 		public bool? WaitingRoom { get; set; }
 
 		/// <summary>
+		/// Gets or sets the value indicating whether to allow multiple devices.
+		/// </summary>
+		[JsonProperty(PropertyName = "allow_multiple_devices")]
+		public bool? AllowMultipleDevices { get; set; }
+
+
+		/// <summary>
 		/// Gets or sets the list of global dial-in countries.
 		/// </summary>
 		[JsonProperty(PropertyName = "global_dial_in_countries")]

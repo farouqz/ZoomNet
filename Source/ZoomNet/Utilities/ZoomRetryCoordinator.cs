@@ -3,6 +3,7 @@ using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Retry;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -45,11 +46,12 @@ namespace ZoomNet.Utilities
 		/// </summary>
 		/// <param name="config">The retry configuration.</param>
 		/// <param name="tokenHandler">The handler that takes care of renewing expired tokens.</param>
-		public ZoomRetryCoordinator(IEnumerable<IRetryConfig> config, ITokenHandler tokenHandler)
-			: this(tokenHandler)
-		{
-			_defaultRetryCoordinator = new RetryCoordinator(config);
-		}
+		//public ZoomRetryCoordinator(IEnumerable<IRetryConfig> config, ITokenHandler tokenHandler)
+		//	: this(tokenHandler)
+		//{
+		//	if (config.Any())
+		//		_defaultRetryCoordinator = new RetryCoordinator(config.First());
+		//}
 
 		/// <summary>Dispatch an HTTP request.</summary>
 		/// <param name="request">The response message to validate.</param>

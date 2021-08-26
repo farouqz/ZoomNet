@@ -26,7 +26,7 @@ namespace ZoomNet
 		private readonly ZoomClientOptions _options;
 		private readonly ILogger _logger;
 
-		private HttpClient _httpClient;
+		private System.Net.Http.HttpClient _httpClient;
 		private Pathoschild.Http.Client.IClient _fluentClient;
 
 		#endregion
@@ -187,18 +187,18 @@ namespace ZoomNet
 		/// <param name="httpClient">Allows you to inject your own HttpClient. This is useful, for example, to setup the HtppClient with a proxy.</param>
 		/// <param name="options">Options for the Zoom client.</param>
 		/// <param name="logger">Logger.</param>
-		public ZoomClient(IConnectionInfo connectionInfo, HttpClient httpClient, ZoomClientOptions options = null, ILogger logger = null)
+		public ZoomClient(IConnectionInfo connectionInfo, System.Net.Http.HttpClient httpClient, ZoomClientOptions options = null, ILogger logger = null)
 			: this(connectionInfo, httpClient, false, options, logger)
 		{
 		}
 
-		private ZoomClient(IConnectionInfo connectionInfo, HttpClient httpClient, bool disposeClient, ZoomClientOptions options, ILogger logger = null)
+		private ZoomClient(IConnectionInfo connectionInfo, System.Net.Http.HttpClient httpClient, bool disposeClient, ZoomClientOptions options, ILogger logger = null)
 		{
 			_mustDisposeHttpClient = disposeClient;
 			_httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 			_options = options ?? GetDefaultOptions();
 			_logger = logger ?? NullLogger.Instance;
-			_fluentClient = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient, false)
+			_fluentClient = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient)
 				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)");
 
 			_fluentClient.Filters.Remove<DefaultErrorFilter>();
