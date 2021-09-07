@@ -367,6 +367,29 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
+		/// Changes the name of the user
+		/// </summary>
+		/// <param name="userId">user id</param>
+		/// <param name="firstname">new firstname name</param>
+		/// <param name="lastname">new last name</param>
+		/// <param name="cancellationToken">cancellation token</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task RenameAsync(string userId, string firstname, string lastname, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "first_name", firstname },
+				{ "last_name", lastname }
+			};
+			return _client.PatchAsync($"users/{userId}")
+					.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
 		/// Retrieve a user's settings.
 		/// </summary>
 		/// <param name="userId">The user Id.</param>
@@ -610,6 +633,24 @@ namespace ZoomNet.Resources
 			return _client
 				.PutAsync($"accounts/{currentAccountId}/users/{userId}/account")
 				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+		/// <summary>
+		/// Change user type
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="userType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		public Task ChangeUserTypeAsync(string userId, UserType userType, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "type", ((int)userType).ToString() },
+			};
+			return _client.PatchAsync($"users/{userId}")
+					.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}

@@ -317,5 +317,26 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task SwitchAccountAsync(string userId, string currentAccountId, string newAccountId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Changes the name of the user
+		/// </summary>
+		/// <param name="userId">user id</param>
+		/// <param name="firstname">new firstname name</param>
+		/// <param name="lastname">new last name</param>
+		/// <param name="cancellationToken">cancellation token</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task RenameAsync(string userId, string firstname, string lastname, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Change User Type
+		/// </summary>
+		/// <param name="userId"></param>
+		/// <param name="userType"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		Task ChangeUserTypeAsync(string userId, UserType userType, CancellationToken cancellationToken = default);
 	}
 }
